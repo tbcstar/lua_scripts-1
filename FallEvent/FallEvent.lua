@@ -1,12 +1,12 @@
 local fallEvent = {}
 
-fallEvent.npc = 196 -- npc entry
+fallEvent.npc = 196 -- 入口NPC
 fallEvent.gob = 990000
 fallEvent.listPlayers = {}
 fallEvent.nPlayers = 0
 fallEvent.startTime = 0
 
-local time = 10 -- 10 sec to drop a platform
+local time = 10 -- 10秒放下一个平台
 local statusEvent = false
 local count = 25 -- n plataform
 
@@ -19,16 +19,16 @@ local FALL_EVENT = 6002
 
 function fallEvent.OnGossipHello(event, player, object)
     if not statusEvent and not fallEvent.CheckPlayer(player) then
-        player:GossipMenuAddItem( 5, "|TINTERFACE/ICONS/ability_mount_charger:28:28:-15:0|tEntrar al evento.", 0, 1 )
+        player:GossipMenuAddItem( 5, "|TINTERFACE/ICONS/ability_mount_charger:28:28:-15:0|t进入活动。", 0, 1 )
     end
-    player:GossipMenuAddItem( 5, "|TINTERFACE/ICONS/ability_mount_charger:28:28:-15:0|tParticipantes: " .."|CFFFF0000"..fallEvent.nPlayers.."|r", 0, 2 )
+    player:GossipMenuAddItem( 5, "|TINTERFACE/ICONS/ability_mount_charger:28:28:-15:0|t参与者：" .."|CFFFF0000"..fallEvent.nPlayers.."|r", 0, 2 )
     if player:IsGM() and not statusEvent then
-        player:GossipMenuAddItem( 5, "|TINTERFACE/ICONS/ability_mount_charger:28:28:-15:0|tIniciar Evento", 0, 3 )
+        player:GossipMenuAddItem( 5, "|TINTERFACE/ICONS/ability_mount_charger:28:28:-15:0|t初始活动", 0, 3 )
     end
     if player:IsGM() and statusEvent then
-        player:GossipMenuAddItem( 5, "|TINTERFACE/ICONS/ability_mount_charger:28:28:-15:0|tReiniciar Evento", 0, 4 )
+        player:GossipMenuAddItem( 5, "|TINTERFACE/ICONS/ability_mount_charger:28:28:-15:0|t重启活动", 0, 4 )
     end
-    player:GossipMenuAddItem( 5, "|TINTERFACE/ICONS/Achievement_Reputation_06:28:28:-15:0|tAdios!.", 0, 5 )
+    player:GossipMenuAddItem( 5, "|TINTERFACE/ICONS/Achievement_Reputation_06:28:28:-15:0|t再见！。", 0, 5 )
     player:GossipSendMenu( 1, object )
 end RegisterCreatureGossipEvent( fallEvent.npc, 1, fallEvent.OnGossipHello )
 
@@ -87,7 +87,7 @@ function fallEvent.UpdateAI(event, creature, diff)
                 local z = pl:GetZ()
                 if z < 104 then
                     fallEvent.nPlayers = fallEvent.nPlayers - 1
-                    creature:SendUnitYell( "El jugador: "..pl:GetName().." cayó y está fuera del evento!", 0 )
+                    creature:SendUnitYell( "玩家："..pl:GetName().." 掉落下了平台，出局啦！", 0 )
                     fallEvent.listPlayers[i] = nil
                     local players = creature:GetPlayersInRange( 100 )
                     for i = 1, #players, 1 do

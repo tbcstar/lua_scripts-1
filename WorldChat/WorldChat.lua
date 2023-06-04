@@ -3,24 +3,11 @@
     Desarrollador por Black7in.
 ]]
 local ChatPrefix = "chat "
-local ChannelName = "World"
+local ChannelName = "世界"
 
 local faction = {
 	"|TInterface/icons/Inv_Misc_Tournaments_banner_Human.png:13|t",
 	"|TInterface/icons/Inv_Misc_Tournaments_banner_Orc.png:13|t"
-}
-local class = {
-    "|TInterface\\icons\\INV_Sword_27.png:13|t",
-	"|TInterface\\icons\\INV_Hammer_01.png:13|t",
-	"|TInterface\\icons\\INV_Weapon_Bow_07.png:13|t",
-	"|TInterface\\icons\\INV_ThrowingKnife_04.png:13|t",
-	"|TInterface\\icons\\INV_Staff_30.png:13|t",
-	"|TInterface\\icons\\Spell_Deathknight_ClassIcon.png:13|t",
-	"|TInterface\\icons\\inv_jewelry_talisman_04.png:13|t",
-	"|TInterface\\icons\\Spell_MageArmor.png:13|t",
-	"|TInterface\\icons\\Spell_Nature_FaerieFire:13|t",
-	"",
-	"|TInterface\\icons\\Ability_Druid_Maul.png:13|t",
 }
 local race = {
     [1] = {
